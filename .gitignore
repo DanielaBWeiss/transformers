@@ -1,5 +1,9 @@
 # Initially taken from Github's Python gitignore file
 
+#models
+examples/seq2seq/output_models/*
+
+Dmples
 .DS_STORE
 
 # Byte-compiled / optimized / DLL files

@@ -15,16 +15,11 @@
 # the proper usage is documented in the README, you need to specify data_dir, output_dir and model_name_or_path
 # run ./finetune.sh --help to see all the possible options
 
-#The max and min numbers apply to the training data that has only up to 4 input sentences
 python finetune_trainer.py \
     --learning_rate=3e-5 \
-    --do_train \
-    --freeze_encoder \
-    --val_check_interval=0.1 \
-    --eval_batch_size=2 \
-    --max_source_length=265 \
-    --max_target_length=30 \
-    --val_max_target_length=50 \
-    --test_max_target_length=50 \
-    --model_name_or_path=sshleifer/distilbart-xsum-12-6 \
+    --fp16 \
+    --do_train --do_eval --do_predict \
+    --evaluation_strategy steps \
+    --predict_with_generate \
+    --n_val 1000 \
     "$@"
