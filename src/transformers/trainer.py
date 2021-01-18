@@ -1501,6 +1501,8 @@ class Trainer:
         preds = preds_gatherer.finalize() if not prediction_loss_only else None
         label_ids = labels_gatherer.finalize() if not prediction_loss_only else None
 
+
+        ### I need to return here predictions (in str) if i want to save them during evaluation
         if self.compute_metrics is not None and preds is not None and label_ids is not None:
             metrics = self.compute_metrics(EvalPrediction(predictions=preds, label_ids=label_ids))
         else:
