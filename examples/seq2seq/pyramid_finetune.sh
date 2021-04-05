@@ -27,15 +27,19 @@
 #--eval_beams=6
 #--config_name=fusion_config.json when we want to make our own configuration to the beam search
 
+#command to run: "./pyramid_finetune.sh  --n_train 10 --n_val 5 --data_dir training_data/tiny --output_dir output_models/tiny"
+#data_dir is the training data, #output_dir saves the model. The rest of the options are here.
+
 python finetune_trainer.py \
     --learning_rate=3e-5 \
     --overwrite_output_dir \
     --do_train \
-    --do_eval \
+    --do_eval --do_predict\
+    --task 'summarization' \
     --num_train_epochs=3 \
     --freeze_encoder \
     --evaluation_strategy steps \
-    --predict_with_generate
+    --predict_with_generate \
     --eval_steps=100 \
     --per_device_train_batch_size=2 \
     --per_device_eval_batch_size=2 \
