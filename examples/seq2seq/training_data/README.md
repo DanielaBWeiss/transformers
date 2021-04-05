@@ -14,21 +14,21 @@
 **Each folder contains trian/val/test files:**
 `train.source, train.target, val.source, val.targer, test.source, test.target`
 
-1. **Folders starting with pyramid_**
+1. **Folders starting with pyr_**
 These files represent fusion instances coming only from the reference summary sentences.
-~5000 train instances.
+~4600 train instances.
 
 2. **Folders starting with thadani_**
 These files represent fusion instances coming from Thadani's recreated dataset.
-~1600 train instances.
+~900 train instances.
 
 3. **Folders starting with doc_**
 These files represent fusion instances coming from the document source sentences.
-~1800 train instances.
+~800 train instances.
 
-4. **Folders starting with combined_**
+4. **Folders starting with summdoc_**
 These files represent fusion instances coming from both summary and document source sentences.
-~6200 train instances.
+~5700 train instances.
 
 4. Folders starting with "tiny" represent roughly 200 fusion instances used for debugging.
 
@@ -47,9 +47,6 @@ ex. "...... ...... ...... ......."
 - These are input sentences with the " </s> " token between sentences.
 ex. "...... </s> ........ </s> ......... </s> .........."
 
-3. `Folders containing "TOKEN"`
-- These are input sentences that are preappended with a word token: "Sentence#:"
-ex. "Sentence0: ......... Sentence1: ........ Sentence2: .......... Sentence3: ............"
 
 #### Min max lengths (in tokens) for each data type - parameters for beam search and fine-tuning
 
