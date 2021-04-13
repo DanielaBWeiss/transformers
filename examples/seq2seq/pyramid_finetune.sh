@@ -35,7 +35,6 @@ python finetune_trainer.py \
     --overwrite_output_dir \
     --do_train \
     --do_eval --do_predict\
-    --task 'summarization' \
     --num_train_epochs=3 \
     --freeze_encoder \
     --evaluation_strategy steps \
@@ -44,6 +43,7 @@ python finetune_trainer.py \
     --per_device_train_batch_size=2 \
     --per_device_eval_batch_size=2 \
     --max_source_length=265 \
+    --eval_beams=6 \
     --max_target_length=30 \
     --val_max_target_length=30 \
     --test_max_target_length=50 \

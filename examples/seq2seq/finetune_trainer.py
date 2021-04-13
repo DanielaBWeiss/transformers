@@ -93,6 +93,15 @@ class DataTrainingArguments:
             "than this will be truncated, sequences shorter will be padded."
         },
     )
+
+    min_target_length: Optional[int] = field(
+        default=4,
+        metadata={
+            "help": "The minimum total sequence length for target text after tokenization. Sequences longer "
+            "than this will be truncated, sequences shorter will be padded."
+        },
+    )
+
     max_target_length: Optional[int] = field(
         default=128,
         metadata={
@@ -208,7 +217,10 @@ def main():
     model = AutoModelForSeq2SeqLM.from_pretrained(
         model_args.model_name_or_path,
         from_tf=".ckpt" in model_args.model_name_or_path,
-        config=config,
+        # config=config,
+        min_length=data_args.min_target_length,
+        max_length=data_args.max_target_length,
+        num_beams=data_args.eval_beams,
         cache_dir=model_args.cache_dir,
     )
 
