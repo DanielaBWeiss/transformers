@@ -61,6 +61,7 @@ class Seq2SeqTrainer(Trainer):
         metric_key_prefix: str = "eval",
         max_length: Optional[int] = None,
         num_beams: Optional[int] = None,
+        min_length: Optional[int] = None,
     ) -> Dict[str, float]:
         """
         Run evaluation and returns metrics.
@@ -93,6 +94,7 @@ class Seq2SeqTrainer(Trainer):
         """
         self._max_length = max_length
         self._num_beams = num_beams
+        self._min_length = min_length
         return super().evaluate(eval_dataset, ignore_keys=ignore_keys, metric_key_prefix=metric_key_prefix)
 
     def predict(
@@ -102,6 +104,7 @@ class Seq2SeqTrainer(Trainer):
         metric_key_prefix: str = "eval",
         max_length: Optional[int] = None,
         num_beams: Optional[int] = None,
+        min_length: Optional[int] = None
     ) -> PredictionOutput:
         """
         Run prediction and returns predictions and potential metrics.
@@ -140,6 +143,7 @@ class Seq2SeqTrainer(Trainer):
         """
         self._max_length = max_length
         self._num_beams = num_beams
+        self._min_length = min_length
         return super().predict(test_dataset, ignore_keys=ignore_keys, metric_key_prefix=metric_key_prefix)
 
     def prediction_step(
@@ -181,6 +185,7 @@ class Seq2SeqTrainer(Trainer):
         gen_kwargs = {
             "max_length": self._max_length if self._max_length is not None else self.model.config.max_length,
             "num_beams": self._num_beams if self._num_beams is not None else self.model.config.num_beams,
+            "min_length": self._min_length if self._min_length is not None else self.model.config.min_length
         }
 
         generated_tokens = self.model.generate(

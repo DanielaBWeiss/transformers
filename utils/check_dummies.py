@@ -317,7 +317,7 @@ def check_dummies(overwrite=False):
     path = os.path.join(PATH_TO_TRANSFORMERS, "utils")
     sentencepiece_file = os.path.join(path, "dummy_sentencepiece_objects.py")
     tokenizers_file = os.path.join(path, "dummy_tokenizers_objects.py")
-    pt_file = os.path.join(path, "dummy_pt_objects.py")
+    pt_file = os.path.join(path, "dummy_pt_objects.py.old")
     tf_file = os.path.join(path, "dummy_tf_objects.py")
     flax_file = os.path.join(path, "dummy_flax_objects.py")
 
@@ -356,12 +356,12 @@ def check_dummies(overwrite=False):
 
     if pt_dummies != actual_pt_dummies:
         if overwrite:
-            print("Updating transformers.utils.dummy_pt_objects.py as the main __init__ has new objects.")
+            print("Updating transformers.utils.dummy_pt_objects.py.old as the main __init__ has new objects.")
             with open(pt_file, "w", encoding="utf-8", newline="\n") as f:
                 f.write(pt_dummies)
         else:
             raise ValueError(
-                "The main __init__ has objects that are not present in transformers.utils.dummy_pt_objects.py.",
+                "The main __init__ has objects that are not present in transformers.utils.dummy_pt_objects.py.old.",
                 "Run `make fix-copies` to fix this.",
             )
 
@@ -372,7 +372,7 @@ def check_dummies(overwrite=False):
                 f.write(tf_dummies)
         else:
             raise ValueError(
-                "The main __init__ has objects that are not present in transformers.utils.dummy_pt_objects.py.",
+                "The main __init__ has objects that are not present in transformers.utils.dummy_pt_objects.py.old.",
                 "Run `make fix-copies` to fix this.",
             )
 
