@@ -579,4 +579,5 @@ class PretrainedConfig(object):
             config_dict (:obj:`Dict[str, Any]`): Dictionary of attributes that shall be updated for this class.
         """
         for key, value in config_dict.items():
+            if key == 'min_length' or key == 'max_length':continue
             setattr(self, key, value)
