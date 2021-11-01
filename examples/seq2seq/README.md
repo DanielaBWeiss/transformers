@@ -14,6 +14,32 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
+## train and evaluate results
+To train 20 times over different sentence order:
+1. run:
+```
+    ./train_X20_test_thadani.sh  <GPU_NUM_1> <GPU_NUM_2> <GPU_NUM_3> <DATA PATH under 'training_data' repository> <data repository name without system number (1-20)>
+```
+For example:
+```
+    ./train_X20_test_thadani.sh  1 2 3 training/extended_doc-pyr extended_doc-pyr_#
+```
+
+This will train 20 different models and test them both over original test sets and thadani test sets.
+
+2. To average ROUGE results over 20 systems, run:
+```
+    python average_results.py
+```
+
+## Merge Type analysis
+To analize merge type, unpdate pathes inside the script and run:
+```
+    python mergingTypeExtraction.py
+```
+
+
+
 ## Sequence to Sequence Training and Evaluation
 
 This directory contains examples for finetuning and evaluating transformers on summarization and translation tasks.
