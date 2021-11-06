@@ -362,7 +362,7 @@ def main():
                     test_output.predictions, skip_special_tokens=True, clean_up_tokenization_spaces=True
                 )
                 test_preds = lmap(str.strip, test_preds)
-                write_txt_file(test_preds, os.path.join(training_args.output_dir, "test_generations.txt"))
+                write_txt_file(test_preds, os.path.join(training_args.output_dir, "align_wnums_test_generations.txt"))
 
     if trainer.is_world_process_zero():
         save_json(all_metrics, os.path.join(training_args.output_dir, "all_results.json"))

@@ -117,7 +117,7 @@ class TestMbartCc25Enro(TestCasePlus):
         # TODO: turn on args.do_predict when PL bug fixed.
         if args.do_predict:
             contents = {os.path.basename(p) for p in contents}
-            assert "test_generations.txt" in contents
+            assert "align_wnums_test_generations.txt" in contents
             assert "test_results.txt" in contents
             # assert len(metrics["val"]) ==  desired_n_evals
             assert len(metrics["test"]) == 1
@@ -197,7 +197,7 @@ class TestDistilMarianNoTeacher(TestCasePlus):
         # TODO: turn on args.do_predict when PL bug fixed.
         if args.do_predict:
             contents = {os.path.basename(p) for p in contents}
-            assert "test_generations.txt" in contents
+            assert "align_wnums_test_generations.txt" in contents
             assert "test_results.txt" in contents
             # assert len(metrics["val"]) ==  desired_n_evals
             assert len(metrics["test"]) == 1

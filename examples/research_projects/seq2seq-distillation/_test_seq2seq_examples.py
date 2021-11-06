@@ -263,7 +263,7 @@ class TestSummarizationDistiller(TestCasePlus):
         ckpt_files = [p for p in contents if p.endswith("ckpt")]
         assert len(ckpt_files) > 0
 
-        self.assertIn("test_generations.txt", contents)
+        self.assertIn("align_wnums_test_generations.txt", contents)
         self.assertIn("test_results.txt", contents)
 
         metrics = load_json(model.metrics_save_path)

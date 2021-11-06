@@ -146,7 +146,7 @@ class TestSummarizationDistillerMultiGPU(TestCasePlus):
         ckpt_files = [p for p in contents if p.endswith("ckpt")]
         assert len(ckpt_files) > 0
 
-        self.assertIn("test_generations.txt", contents)
+        self.assertIn("align_wnums_test_generations.txt", contents)
         self.assertIn("test_results.txt", contents)
 
         # get the following from the module, (we don't have access to `model` here)

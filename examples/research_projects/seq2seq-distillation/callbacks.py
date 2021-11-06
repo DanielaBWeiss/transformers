@@ -35,7 +35,7 @@ class Seq2SeqLoggingCallback(pl.Callback):
         od = Path(pl_module.hparams.output_dir)
         if type_path == "test":
             results_file = od / "test_results.txt"
-            generations_file = od / "test_generations.txt"
+            generations_file = od / "align_wnums_test_generations.txt"
         else:
             # this never gets hit. I prefer not to save intermediate generations, and results are in metrics.json
             # If people want this it will be easy enough to add back.
